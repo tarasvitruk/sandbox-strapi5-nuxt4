@@ -1,0 +1,25 @@
+{
+  "name": "@adbros/stylelint-config",
+  "version": "1.1.0",
+  "description": "Stylelint config for Adbros projects",
+  "license": "MIT",
+  "homepage": "https://github.com/adbrosaci/fe-config",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "release": "bumpp -t stylelint-config@ && npm publish"
+  },
+  "dependencies": {
+    "@stylistic/stylelint-plugin": "^2.1.2",
+    "postcss-html": "^1.7.0",
+    "stylelint": "^16.8.0",
+    "stylelint-order": "^6.0.4"
+  },
+  "devDependencies": {
+    "bumpp": "^9.4.1",
+    "eslint": "^8.43.0"
+  },
+  "peerDependencies": {
+    "stylelint": "^16.8.0"
+  }
+}

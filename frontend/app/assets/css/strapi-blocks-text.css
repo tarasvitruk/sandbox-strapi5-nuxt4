@@ -1,0 +1,47 @@
+.rich-text h2 {
+	@apply text-3xl mb-4 lg:text-4xl;
+}
+
+.rich-text h3 {
+	@apply text-2xl mb-4 lg:text-3xl;
+}
+
+.rich-text h4 {
+	@apply text-xl mb-4 lg:text-2xl;
+}
+
+.rich-text p {
+	@apply mb-4;
+}
+
+.rich-text a {
+	@apply underline-offset-2 underline hover:no-underline;
+}
+
+.rich-text ul {
+	@apply mb-4 list-none pl-2;
+}
+
+.rich-text ul li {
+	@apply relative mb-2 pl-4 before:content-['-'] before:absolute before:left-0;
+}
+
+.rich-text ol {
+	@apply mb-4 list-decimal pl-6;
+}
+
+.rich-text ol li {
+	@apply mb-2;
+}
+
+.rich-text blockquote {
+	@apply border-l-2 pl-4 italic mb-4;
+}
+
+.rich-text pre {
+	@apply p-4 bg-black text-white overflow-x-auto mb-4;
+}
+
+.rich-text code {
+	@apply px-2 py-1 bg-white/5 mb-4;
+}

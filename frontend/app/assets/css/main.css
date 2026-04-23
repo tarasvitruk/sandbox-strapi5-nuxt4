@@ -1,0 +1,31 @@
+@import './fonts.css';
+@import './strapi-blocks-text.css';
+
+html,
+body,
+#__nuxt,
+.nuxt-container {
+	@apply w-full h-full font-sans;
+}
+
+.nuxt-container > div {
+	@apply w-full min-h-full;
+}
+
+strong {
+	@apply font-bold;
+}
+
+button[disabled] {
+	@apply cursor-not-allowed;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+	/* TODO: є баг коли фокус скаче по кнопках та посиланнях (можна спробувати добавити їм бордер транспарент) */
+	/* @apply !border-blueNew !border ring-0 outline-none; */
+	outline-color: #13cfdb !important;
+}

@@ -1,0 +1,26 @@
+{
+	"meta": {
+		"index": {
+			"title": "Tarvit",
+			"description": "Tarvit description",
+			"keywords": "Tarvit, Taras Vitruk, Frontend vývojář"
+		},
+		"about-me": {
+			"title": "About me - Tarvit",
+			"description": "Tarvit description",
+			"keywords": "Tarvit, Taras Vitruk, Frontend vývojář"
+		},
+		"projects": {
+			"title": "Projects - Tarvit",
+			"description": "Tarvit description",
+			"keywords": "Tarvit, Taras Vitruk, Frontend vývojář"
+		},
+		"contact": {
+			"title": "Contact - Tarvit",
+			"description": "Tarvit description",
+			"keywords": "Tarvit, Taras Vitruk, Frontend vývojář"
+		}
+	},
+
+	"Tarvit logo": "Tarvit logo"
+}

@@ -1,0 +1,65 @@
+services:
+  backend:
+    image: backend
+    container_name: strapi-backend
+    build:
+      context: .
+      dockerfile: .docker/backend/Dockerfile
+    env_file: ./backend/.env
+    ports:
+      - ${BACKEND_PORT:-1337}:1337
+    volumes:
+      - ./backend:/usr/src/app
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_CLIENT: mysql
+      DATABASE_HOST: db
+      DATABASE_PORT: ${DB_PORT}
+      DATABASE_NAME: ${MYSQL_DATABASE?}
+      DATABASE_USERNAME: ${MYSQL_USER?}
+      DATABASE_PASSWORD: ${MYSQL_PASSWORD?}
+      JWT_SECRET: ${JWT_SECRET?}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET?}
+      APP_KEYS: ${APP_KEYS?}
+      API_TOKEN_SALT: ${API_TOKEN_SALT?}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT?}
+      EMAIL_DEFAULT_FROM: ${EMAIL_DEFAULT_FROM?}
+#    command: ['bash', '-c', 'npm ci && npm run build && npm run develop']
+    command: [ 'bash', '-c', 'rm -rf /tmp/nitro/worker-* && [ -d "node_modules" ] && npm run develop || npm ci && npm run build && npm run develop' ]
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    container_name: mariadb-database
+    ports:
+      - ${DB_PORT:-3306}:3306
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD?}
+      MYSQL_DATABASE: ${MYSQL_DATABASE?}
+      MYSQL_USER: ${MYSQL_USER?}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD?}
+
+  frontend:
+    image: frontend
+    container_name: nuxt-frontend
+    build:
+      context: .
+      dockerfile: .docker/frontend/Dockerfile
+    ports:
+      - ${FRONTEND_PORT:-3000}:3000
+    volumes:
+      - ./frontend:/usr/src/app
+    environment:
+      ENV: ${ENV}
+      DOMAIN_URL: ${DOMAIN_URL}
+      API_BASE_URL: ${API_BASE_URL}
+      API_INTERNAL_URL: ${API_INTERNAL_URL}
+    command: [ 'bash', '-c', 'rm -rf /tmp/nitro/worker-* && [ -d "node_modules" ] && npm run dev || npm ci && npm run dev' ]
+    depends_on:
+      - backend
+
+volumes:
+  db-data:
